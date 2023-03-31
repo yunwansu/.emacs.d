@@ -11,3 +11,9 @@
 **magit** <https://magit.vc/>
 
 **markdown-mode** <https://jblevins.org/projects/markdown-mode/>
+
+**doom-themes** <https://github.com/doomemacs/themes>
+
+**all-the-icons** <https://github.com/domtronn/all-the-icons.el>
+
+**neotree** <https://github.com/jaypei/emacs-neotree>

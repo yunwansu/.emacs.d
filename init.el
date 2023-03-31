@@ -10,13 +10,19 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(magit markdown-mode orderless vertico use-package consult)))
+   '(neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; hide scroll-bar
+(scroll-bar-mode -1)
+
+;; hide tool-bar
+(tool-bar-mode -1)
 
 (use-package consult
   :bind (
@@ -104,3 +110,30 @@
   :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
+
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+	doom-themes-enable-italic t) ; if num, italic is universally disabled
+  (load-theme 'doom-one t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+
+;; need install fonts
+;; M-x all-the-icons-install-fonts
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+(use-package neotree
+  :ensure t
+  :bind ("C-t" . 'neotree-toggle)
+  :init
+  ;; slow rendering
+  (setq inhibit-compacting-font-caches t))
