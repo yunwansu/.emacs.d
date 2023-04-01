@@ -1,4 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
 (require 'package)
+;;; Code:
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
 ;; and `package-pinned-packages`. Most users will not need or want to do this.
@@ -10,7 +13,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult)))
+   '(flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -26,6 +29,7 @@
 (set-default 'truncate-lines t)
 
 (use-package consult
+  :ensure t
   :bind (
 	 ("C-c M-x" . consult-mode-command)
 	 ("C-x b" . consult-buffer))
@@ -35,6 +39,7 @@
   :hook (completion-list-mode . consult-preview-at-point-mode))
 
 (use-package vertico
+  :ensure t
   :init
   (vertico-mode)
 
@@ -87,6 +92,7 @@
 
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
+  :ensure t
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
@@ -130,6 +136,7 @@
 ;; need install fonts
 ;; M-x all-the-icons-install-fonts
 (use-package all-the-icons
+  :ensure t
   :if (display-graphic-p))
 
 (use-package neotree
@@ -159,3 +166,21 @@
 (keymap-global-set "C-*" (lambda () (interactive) (sanityinc/adjust-opacity nil -2)))
 (keymap-global-set "C-(" (lambda () (interactive) (sanityinc/adjust-opacity nil 2)))
 (keymap-global-set "C-&" (lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
+
+(use-package clojure-mode
+  :ensure t
+  :hook
+  ((clojure-mode . subword-mode)
+   (clojure-mode . smartparens-mode)
+   (clojure-mode . rainbow-delimiters-mode)))
+
+(use-package cider
+  :ensure t
+  :defer t)
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+(use-package flycheck-pos-tip :ensure t :after flycheck)
+
+;;; init.el ends here
