@@ -183,4 +183,7 @@
   :init (global-flycheck-mode))
 (use-package flycheck-pos-tip :ensure t :after flycheck)
 
+(use-package yaml-mode
+  :ensure t)
+
 ;;; init.el ends here

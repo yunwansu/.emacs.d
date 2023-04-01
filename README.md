@@ -33,3 +33,5 @@
 **flycheck** <https://www.flycheck.org/en/latest/>
 
 **flycheck-pos-tip** <https://github.com/flycheck/flycheck-pos-tip>
+
+**yaml-mode** <https://github.com/yoshiki/yaml-mode>
