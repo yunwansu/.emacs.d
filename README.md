@@ -17,3 +17,7 @@
 **all-the-icons** <https://github.com/domtronn/all-the-icons.el>
 
 **neotree** <https://github.com/jaypei/emacs-neotree>
+
+**ace-window** <https://github.com/abo-abo/ace-window>
+
+**emacs-transparency** <https://github.com/purcell/emacs.d/blob/master/lisp/init-gui-frames.el#L42>

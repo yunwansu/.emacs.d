@@ -10,7 +10,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult)))
+   '(ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -20,9 +20,10 @@
 
 ;; hide scroll-bar
 (scroll-bar-mode -1)
-
 ;; hide tool-bar
 (tool-bar-mode -1)
+;; Long line truncate
+(set-default 'truncate-lines t)
 
 (use-package consult
   :bind (
@@ -137,3 +138,24 @@
   :init
   ;; slow rendering
   (setq inhibit-compacting-font-caches t))
+
+(use-package ace-window
+  :ensure t
+  :bind ("C-x o" . 'ace-window))
+
+;; copy Steve Purcell's code  https://github.com/purcell/emacs.d/blob/master/lisp/init-gui-frames.el#L42
+(defun sanityinc/adjust-opacity (frame incr)
+  "Adjust the background opacity of FRAME by increment INCR."
+  (unless (display-graphic-p frame)
+    (error "Cannot adjust opacity of this frame"))
+  (let* ((oldalpha (or (frame-parameter frame 'alpha) 100))
+         ;; The 'alpha frame param became a pair at some point in
+         ;; emacs 24.x, e.g. (100 100)
+         (oldalpha (if (listp oldalpha) (car oldalpha) oldalpha))
+         (newalpha (+ incr oldalpha)))
+    (when (and (<= frame-alpha-lower-limit newalpha) (>= 100 newalpha))
+      (modify-frame-parameters frame (list (cons 'alpha newalpha))))))
+
+(keymap-global-set "C-*" (lambda () (interactive) (sanityinc/adjust-opacity nil -2)))
+(keymap-global-set "C-(" (lambda () (interactive) (sanityinc/adjust-opacity nil 2)))
+(keymap-global-set "C-&" (lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
