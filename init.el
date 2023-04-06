@@ -186,4 +186,7 @@
 (use-package yaml-mode
   :ensure t)
 
+(use-package magit
+  :ensure t)
+
 ;;; init.el ends here
