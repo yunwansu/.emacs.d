@@ -35,3 +35,7 @@
 **flycheck-pos-tip** <https://github.com/flycheck/flycheck-pos-tip>
 
 **yaml-mode** <https://github.com/yoshiki/yaml-mode>
+
+**maxframe** <https://github.com/rmm5t/maxframe.el/tree/13bda6dd9f1d96aa4b9dd9957a26cefd399a7772>
+
+**whitespace-cleanup-mode** <https://github.com/purcell/whitespace-cleanup-mode/tree/b108b73ddf8f7e747d5a20a681560171e02ad037>
