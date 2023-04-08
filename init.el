@@ -199,4 +199,10 @@
   :ensure t
   :init
   (add-hook 'after-init-hook 'global-whitespace-cleanup-mode))
+
+(use-package marginalia
+  :ensure t
+  :hook
+  (after-init . marginalia-mode))
+
 ;;; init.el ends here
