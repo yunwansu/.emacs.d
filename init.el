@@ -41,6 +41,7 @@
 
 (use-package vertico
   :ensure t
+  :defer t
   :init
   (vertico-mode)
 
@@ -142,6 +143,7 @@
 
 (use-package neotree
   :ensure t
+  :defer t
   :bind ("C-t" . 'neotree-toggle)
   :init
   ;; slow rendering
@@ -149,6 +151,7 @@
 
 (use-package ace-window
   :ensure t
+  :defer t
   :bind ("C-x o" . 'ace-window))
 
 ;; copy Steve Purcell's code  https://github.com/purcell/emacs.d/blob/master/lisp/init-gui-frames.el#L42
@@ -170,6 +173,7 @@
 
 (use-package clojure-mode
   :ensure t
+  :defer t
   :hook
   ((clojure-mode . subword-mode)
    (clojure-mode . smartparens-mode)
@@ -181,13 +185,19 @@
 
 (use-package flycheck
   :ensure t
-  :init (global-flycheck-mode))
-(use-package flycheck-pos-tip :ensure t :after flycheck)
+  :hook
+  (after-init . global-flycheck-mode))
+
+(use-package flycheck-pos-tip
+  :ensure t
+  :after flycheck)
 
 (use-package yaml-mode
+  :defer t
   :ensure t)
 
 (use-package magit
+  :defer t
   :ensure t)
 
 (use-package maxframe
@@ -197,11 +207,12 @@
 
 (use-package whitespace-cleanup-mode
   :ensure t
-  :init
-  (add-hook 'after-init-hook 'global-whitespace-cleanup-mode))
+  :hook
+  (after-init 'global-whitespace-cleanup-mode))
 
 (use-package marginalia
   :ensure t
+  :defer t
   :hook
   (after-init . marginalia-mode))
 
