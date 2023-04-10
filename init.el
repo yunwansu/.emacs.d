@@ -13,7 +13,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(whitespace-cleanup-mode maxframe flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
+   '(kubernetes org-bullets whitespace-cleanup-mode maxframe flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
  '(session-use-package t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -215,5 +215,21 @@
   :defer t
   :hook
   (after-init . marginalia-mode))
+
+(use-package org-bullets
+  :ensure t)
+
+(use-package org-mode
+  :init
+  (setq org-agenda-files '("~/my_work/gtd/"))
+  :hook
+  ((org-mode . org-indent-mode)
+   (org-mode . org-bullets-mode)))
+
+(use-package kubernetes
+  :ensure t
+  :config
+  (setq kubernetes-poll-frequency 3600
+        kubernetes-redraw-frequency 3600))
 
 ;;; init.el ends here
