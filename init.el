@@ -13,7 +13,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(kubernetes org-bullets whitespace-cleanup-mode maxframe flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
+   '(doom-modeline kubernetes org-bullets whitespace-cleanup-mode maxframe flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
  '(session-use-package t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -127,13 +127,24 @@
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
 	doom-themes-enable-italic t) ; if num, italic is universally disabled
   (load-theme 'doom-one t)
-
+  (global-display-line-numbers-mode)
+  (global-hl-line-mode)
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; Enable custom neotree theme (all-the-icons must be installed!)
   (doom-themes-neotree-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
+
+(use-package doom-modeline
+  :ensure t
+  :hook
+  (after-init . doom-modeline-mode))
+
+(use-package anzu
+  :ensure t
+  :hook
+  (after-init . global-anzu-mode))
 
 ;; need install fonts
 ;; M-x all-the-icons-install-fonts

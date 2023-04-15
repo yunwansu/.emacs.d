@@ -14,6 +14,10 @@
 
 **doom-themes** <https://github.com/doomemacs/themes>
 
+**doom-modeline** <https://github.com/seagle0128/doom-modeline/tree/a86ec8effe242cab8aba09ec0a2c7fed555c1fce>
+
+**anzu** <https://github.com/emacsorphanage/anzu/tree/14e4483a5e708097870b22ac56ea693ec1d893bf>
+
 **all-the-icons** <https://github.com/domtronn/all-the-icons.el>
 
 **neotree** <https://github.com/jaypei/emacs-neotree>
