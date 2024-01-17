@@ -13,7 +13,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(doom-modeline kubernetes org-bullets whitespace-cleanup-mode maxframe flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
+   '(anzu doom-modeline kubernetes org-bullets whitespace-cleanup-mode maxframe flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
  '(session-use-package t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -28,6 +28,9 @@
 (tool-bar-mode -1)
 ;; Long line truncate
 (set-default 'truncate-lines t)
+
+(display-time-mode t)
+
 
 (use-package consult
   :ensure t
