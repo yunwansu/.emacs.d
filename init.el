@@ -13,7 +13,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(anzu doom-modeline kubernetes org-bullets whitespace-cleanup-mode maxframe flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
+   '(company-mode company anzu doom-modeline kubernetes org-bullets whitespace-cleanup-mode maxframe flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
  '(session-use-package t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -245,5 +245,14 @@
   :config
   (setq kubernetes-poll-frequency 3600
         kubernetes-redraw-frequency 3600))
+
+(use-package company
+  :ensure t
+  :defer t
+  :config
+  (setq company-tooltip-align-annotations t
+	company-tooltip-flip-when-above t)
+  :hook
+  (after-init . global-company-mode))
 
 ;;; init.el ends here
