@@ -185,6 +185,13 @@
 (keymap-global-set "C-(" (lambda () (interactive) (sanityinc/adjust-opacity nil 2)))
 (keymap-global-set "C-&" (lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
 
+
+(use-package rainbow-delimiters
+  :ensure t)
+
+(use-package smartparens
+  :ensure t)
+
 (use-package clojure-mode
   :ensure t
   :defer t
@@ -254,5 +261,21 @@
 	company-tooltip-flip-when-above t)
   :hook
   (after-init . global-company-mode))
+
+
+(use-package go-translate
+  :ensure t
+  :defer t
+  :after
+  (gts-translator
+   :picker (gts-prompt-picker)
+   :engines (list (gts-bing-engine) (gts-google-engine))
+   :render (gts-buffer-render))
+  :config
+  (setq gts-translate-list '(("en" "ko"))))
+
+(use-package prodigy
+  :ensure t
+  :defer t)
 
 ;;; init.el ends here
