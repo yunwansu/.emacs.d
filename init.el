@@ -13,7 +13,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company-mode company anzu doom-modeline kubernetes org-bullets whitespace-cleanup-mode maxframe flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
+   '(prodigy company-mode company anzu doom-modeline kubernetes org-bullets whitespace-cleanup-mode maxframe flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
  '(session-use-package t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -261,18 +261,6 @@
 	company-tooltip-flip-when-above t)
   :hook
   (after-init . global-company-mode))
-
-
-(use-package go-translate
-  :ensure t
-  :defer t
-  :after
-  (gts-translator
-   :picker (gts-prompt-picker)
-   :engines (list (gts-bing-engine) (gts-google-engine))
-   :render (gts-buffer-render))
-  :config
-  (setq gts-translate-list '(("en" "ko"))))
 
 (use-package prodigy
   :ensure t
