@@ -239,7 +239,8 @@
   :defer t
   :config
   (setq company-tooltip-align-annotations t
-	company-tooltip-flip-when-above t)
+	company-tooltip-flip-when-above t
+	company-dabbrev-downcase nil)
   :hook
   (after-init . global-company-mode))
 
