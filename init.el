@@ -13,7 +13,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(prodigy company-mode company anzu doom-modeline org-bullets whitespace-cleanup-mode flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window neotree all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
+   '(prodigy company-mode company anzu doom-modeline org-bullets whitespace-cleanup-mode flycheck-pos-tip flycheck cider rainbow-delimiters smartparens clojure-mode ace-window all-the-icons doom-themes magit markdown-mode orderless vertico use-package consult))
  '(session-use-package t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -154,14 +154,6 @@
 (use-package all-the-icons
   :ensure t
   :if (display-graphic-p))
-
-(use-package neotree
-  :ensure t
-  :defer t
-  :bind ("C-t" . 'neotree-toggle)
-  :init
-  ;; slow rendering
-  (setq inhibit-compacting-font-caches t))
 
 (use-package ace-window
   :ensure t
