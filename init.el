@@ -247,4 +247,7 @@
   :ensure t
   :defer t)
 
+(use-package go-mode
+  :ensure t
+  :defer t)
 ;;; init.el ends here
