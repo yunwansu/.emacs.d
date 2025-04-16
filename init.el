@@ -1,12 +1,16 @@
 ;;; package --- Summary
 ;;; Commentary:
+(setq package-enable-at-startup nil)
+(setq use-package-always-ensure t)
+
 (require 'package)
+
 ;;; Code:
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
 ;; and `package-pinned-packages`. Most users will not need or want to do this.
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,6 +34,13 @@
 (set-default 'truncate-lines t)
 
 (display-time-mode t)
+
+(setq gc-cons-threshold (* 100 1024 1024))  ;; 100MB
+
+(when (fboundp 'global-so-long-mode)
+  (global-so-long-mode 1))
+
+(setq use-package-always-ensure t)
 
 
 (use-package consult
@@ -141,8 +152,7 @@
 
 (use-package doom-modeline
   :ensure t
-  :hook
-  (after-init . doom-modeline-mode))
+  :init (doom-modeline-mode 1))
 
 (use-package anzu
   :ensure t
@@ -152,8 +162,10 @@
 ;; need install fonts
 ;; M-x all-the-icons-install-fonts
 (use-package all-the-icons
-  :ensure t
-  :if (display-graphic-p))
+  :if (display-graphic-p)
+  :config
+  (unless (member "all-the-icons" (font-family-list))
+    (all-the-icons-install-fonts t)))
 
 (use-package ace-window
   :ensure t
@@ -219,15 +231,15 @@
   (after-init 'global-whitespace-cleanup-mode))
 
 (use-package marginalia
+  :after vertico
   :ensure t
-  :defer t
-  :hook
-  (after-init . marginalia-mode))
+  :init
+  (marginalia-mode))
 
 (use-package org-bullets
   :ensure t)
 
-(use-package org-mode
+(use-package org
   :init
   (setq org-agenda-files '("~/my_work/gtd/"))
   :hook
@@ -251,4 +263,18 @@
 (use-package go-mode
   :ensure t
   :defer t)
+
+
+(use-package web-mode
+  :ensure t
+  :mode
+  (("\\.phtml\\'" . web-mode)
+   ("\\.php\\'" . web-mode)
+   ("\\.tpl\\'" . web-mode)
+   ("\\.[agj]sp\\'" . web-mode)
+   ("\\.as[cp]x\\'" . web-mode)
+   ("\\.erb\\'" . web-mode)
+   ("\\.mustache\\'" . web-mode)
+   ("\\.djhtml\\'" . web-mode)
+   ("\\.ftl\\'" . web-mode))
 ;;; init.el ends here
